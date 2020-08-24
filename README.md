@@ -23,3 +23,5 @@ dependencies{
   implementation 'com.huawei.hms:scanplus:1.1.1.301'
  }
 ```
+
+## Handler按钮实现异步处理消息，不影响主线程中其他按钮得使用
