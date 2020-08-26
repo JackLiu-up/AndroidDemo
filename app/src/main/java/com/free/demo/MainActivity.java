@@ -7,14 +7,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
-    private Button btn1, btn2, btn3, btn4;
-    private TextView textView;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+    private static final int MSG_FINISH=0x0001;
+    private Button btn1, btn2, btn3, btn4, btn5;
+    private TextView textView, tvContent;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -22,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             switch (msg.what) {
                 case 0x0001:
                     int index = msg.arg1;
-                    textView.setText(index+"");//允许，运行在
+                    textView.setText(index + "");//允许，运行在
                     break;
             }
         }
@@ -35,9 +45,47 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initContral();
+
+
     }
 
-    public void test(View view) {
+    /*private List<String> getPullParserContent(Resources res, int id) throws IOException, XmlPullParserException {
+        List<String> contents = null;
+        String tagName;
+        //XMLPullParser
+        XmlPullParser parser = getResources().getXml(R.xml.words);
+        //Pull解析本质是SAX解析
+
+        int eventType = parser.getEventType();
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            switch (eventType) {
+                case XmlPullParser.START_DOCUMENT://文档开始
+                    Log.i("TEST", "STATE_DOCUMENT");
+                    contents = new ArrayList<String>();
+                    break;
+                case XmlPullParser.END_DOCUMENT://文档结束
+                    break;
+                case XmlPullParser.START_TAG://标记（标签，元素，节点）
+                    tagName = parser.getName();//得到标记的名字
+                    if (tagName.equals("word")) {
+                        String value = parser.getAttributeValue(0);
+                        contents.add(value);
+                        Log.i("TEST", "START_TAG" + tagName + " " + value);
+                    }
+                    break;
+                case XmlPullParser.END_TAG://结束
+                    tagName = parser.getName();
+                    Log.i("TEST", "END_TAG" + tagName);
+                    break;
+            }
+            eventType = parser.next();
+
+        }
+        return contents;
+    }*/
+
+
+    public void test(View view) throws JSONException {
         switch (view.getId()) {
             case R.id.button1:
                 startActivity(new Intent(MainActivity.this, CountActivity.class));
@@ -71,6 +119,17 @@ public class MainActivity extends AppCompatActivity {
                     ;
                 }.start();
                 break;
+            case R.id.btn5:
+                String data="{\"name\":\"Jason\"}";
+                try {
+                    JSONObject jsonObject = new JSONObject(data);
+                   //通过Key 获取值
+                    String name = jsonObject.getString("name");
+                    tvContent.setText(name);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
@@ -100,6 +159,9 @@ public class MainActivity extends AppCompatActivity {
 
         btn4 = findViewById(R.id.btnSynced);
         textView = findViewById(R.id.textView);
+
+        btn5 = findViewById(R.id.btn5);
+        tvContent = findViewById(R.id.tvContent);
     }
 
 
