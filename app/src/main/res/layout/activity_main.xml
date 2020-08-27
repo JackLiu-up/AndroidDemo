@@ -8,33 +8,33 @@
 
     <TextView
         android:id="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="异步消息"
         android:textSize="22sp"
-        android:layout_height="50dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="test"
         android:text="打开计算器"
         android:textSize="20sp"
-        android:onClick="test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/button2"
-        android:text="打开侧滑栏"
-        android:textSize="20sp"
-        android:onClick="test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="test"
+        android:text="打开侧滑栏"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button1" />
@@ -43,8 +43,8 @@
         android:id="@+id/btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点击扫码"
         android:onClick="test"
+        android:text="点击扫码"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +54,8 @@
         android:id="@+id/btnSynced"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点击异步"
         android:onClick="test"
+        android:text="点击异步"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,9 +65,9 @@
         android:id="@+id/btn5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="test"
         android:text="@string/button"
         android:textSize="20sp"
-        android:onClick="test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSynced" />
@@ -77,9 +77,32 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn5" />
+
+    <Button
+        android:id="@+id/toast1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="test"
+        android:text="toast测试"
+        app:layout_constraintEnd_toStartOf="@+id/toast2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+
+    <Button
+        android:id="@+id/toast2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="test"
+        android:text="toast图片"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/toast1"
+        app:layout_constraintTop_toBottomOf="@+id/tvContent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

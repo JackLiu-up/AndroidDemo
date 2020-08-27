@@ -10,7 +10,9 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -120,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 }.start();
                 break;
             case R.id.btn5:
-                String data="{\"name\":\"Jason\"}";
+                String data="{\"name\":\"Jason\",\"age\":\"24\"}";
                 try {
                     JSONObject jsonObject = new JSONObject(data);
                    //通过Key 获取值
@@ -129,6 +131,23 @@ public class MainActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                break;
+            case R.id.toast1:
+                //使用静态方法makeText
+                //context上下文，text消息内容，duration持续时间 值Toast.LENGTH_LONG,LENGTH_SHORT,固定值
+                //.show()方法 显示
+                Toast.makeText(this, "这是一个测试提示消息", Toast.LENGTH_SHORT).show();
+                break;
+            case  R.id.toast2:
+                //1.构造来创建Toast
+                Toast toast = new Toast(this);
+                //2.创建要显示的view
+                ImageView imageView = new ImageView(this);
+                imageView.setImageResource(R.drawable.ic_android_black_24dp);
+
+                toast.setView(imageView);
+                toast.setDuration(1000);
+                toast.show();
                 break;
         }
     }
