@@ -25,7 +25,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MSG_FINISH=0x0001;
-    private Button btn1, btn2, btn3, btn4, btn5;
+    private Button btn1, btn2, btn3, btn4, btn5,btn6;
     private TextView textView, tvContent;
     private Handler handler = new Handler() {
         @Override
@@ -149,6 +149,11 @@ public class MainActivity extends AppCompatActivity {
                 toast.setDuration(1000);
                 toast.show();
                 break;
+
+            case R.id.displayOnList:
+                Log.d("TAG","点击列表按钮");
+                startActivity(new Intent(MainActivity.this,DisplayList.class));
+                break;
         }
     }
 
@@ -181,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn5 = findViewById(R.id.btn5);
         tvContent = findViewById(R.id.tvContent);
+        btn6 = findViewById(R.id.displayOnList);
     }
 
 
