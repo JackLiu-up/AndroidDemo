@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int MSG_FINISH=0x0001;
-    private Button btn1, btn2, btn3, btn4, btn5,btn6;
+    private static final int MSG_FINISH = 0x0001;
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8,btn9;
     private TextView textView, tvContent;
     private Handler handler = new Handler() {
         @Override
@@ -50,41 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-    /*private List<String> getPullParserContent(Resources res, int id) throws IOException, XmlPullParserException {
-        List<String> contents = null;
-        String tagName;
-        //XMLPullParser
-        XmlPullParser parser = getResources().getXml(R.xml.words);
-        //Pull解析本质是SAX解析
-
-        int eventType = parser.getEventType();
-        while (eventType != XmlPullParser.END_DOCUMENT) {
-            switch (eventType) {
-                case XmlPullParser.START_DOCUMENT://文档开始
-                    Log.i("TEST", "STATE_DOCUMENT");
-                    contents = new ArrayList<String>();
-                    break;
-                case XmlPullParser.END_DOCUMENT://文档结束
-                    break;
-                case XmlPullParser.START_TAG://标记（标签，元素，节点）
-                    tagName = parser.getName();//得到标记的名字
-                    if (tagName.equals("word")) {
-                        String value = parser.getAttributeValue(0);
-                        contents.add(value);
-                        Log.i("TEST", "START_TAG" + tagName + " " + value);
-                    }
-                    break;
-                case XmlPullParser.END_TAG://结束
-                    tagName = parser.getName();
-                    Log.i("TEST", "END_TAG" + tagName);
-                    break;
-            }
-            eventType = parser.next();
-
-        }
-        return contents;
-    }*/
 
 
     public void test(View view) throws JSONException {
@@ -122,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
                 }.start();
                 break;
             case R.id.btn5:
-                String data="{\"name\":\"Jason\",\"age\":\"24\"}";
+                String data = "{\"name\":\"Jason\",\"age\":\"24\"}";
                 try {
                     JSONObject jsonObject = new JSONObject(data);
-                   //通过Key 获取值
+                    //通过Key 获取值
                     String name = jsonObject.getString("name");
                     tvContent.setText(name);
                 } catch (JSONException e) {
@@ -138,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 //.show()方法 显示
                 Toast.makeText(this, "这是一个测试提示消息", Toast.LENGTH_SHORT).show();
                 break;
-            case  R.id.toast2:
+            case R.id.toast2:
                 //1.构造来创建Toast
                 Toast toast = new Toast(this);
                 //2.创建要显示的view
@@ -151,9 +116,17 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.displayOnList:
-                Log.d("TAG","点击列表按钮");
-                startActivity(new Intent(MainActivity.this,DisplayList.class));
+                Log.d("TAG", "点击列表按钮");
+                startActivity(new Intent(MainActivity.this, DisplayList.class));
                 break;
+            case R.id.button4:
+                startActivity(new Intent(MainActivity.this, Login.class));
+                break;
+            case R.id.btnImage:
+                startActivity(new Intent(MainActivity.this, Image.class));
+                break;
+            case R.id.button5:
+                startActivity(new Intent(MainActivity.this,Adapter.class));
         }
     }
 
@@ -187,6 +160,9 @@ public class MainActivity extends AppCompatActivity {
         btn5 = findViewById(R.id.btn5);
         tvContent = findViewById(R.id.tvContent);
         btn6 = findViewById(R.id.displayOnList);
+        btn7 = findViewById(R.id.button4);
+        btn8 = findViewById(R.id.btnImage);
+        btn9 = findViewById(R.id.button5);
     }
 
 

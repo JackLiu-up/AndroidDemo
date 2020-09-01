@@ -25,3 +25,8 @@ dependencies{
 ```
 
 ## Handler按钮实现异步处理消息，不影响主线程中其他按钮得使用
+
+## Dialog对话框的使用
+
+## 引用第三方库
+app build.gradle下添加依赖： implementation 'com.github.bumptech.glide:glide:4.11.0'
